@@ -15,8 +15,8 @@ with open(f"{MODEL_DIR}/user_index.json", "r", encoding="utf-8") as f:
 with open(f"{MODEL_DIR}/index_user.json", "r", encoding="utf-8") as f:
     INDEX_USER = {int(k): v for k, v in json.load(f).items()}
 
-ITEM_SIM = np.load(f"{MODEL_DIR}/item_sim.npy")
-ITEM_MEANS = np.load(f"{MODEL_DIR}/item_means.npy")
+ITEM_SIM = np.load(f"{MODEL_DIR}/item_sim.npy", allow_pickle=True)
+ITEM_MEANS = np.load(f"{MODEL_DIR}/item_means.npy", allow_pickle=True)
 BOOKS = pd.read_parquet(f"{MODEL_DIR}/meta_books.parquet")
 
 user_rated = {}
@@ -39,6 +39,10 @@ def _book_meta(book_id: str):
     if row.empty:
         return {"book_id": book_id, "title": None, "author": None, "tags": None}
     return row.iloc[0].to_dict()
+
+@app.get("/")
+def root():
+    return {"message": "Book Recommender API", "status": "running", "version": "1.0.0"}
 
 @app.get("/health")
 def health():

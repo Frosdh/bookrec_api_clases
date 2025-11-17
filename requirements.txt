@@ -1,3 +1,11 @@
+fastapi
+uvicorn
+pandas
+numpy
+scikit-learn
+joblib
+pydantic
+pyarrow
 streamlit
 pandas
 numpy
