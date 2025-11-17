@@ -19,7 +19,7 @@ if mode == "Usar API FastAPI":
     base_url = st.sidebar.text_input("URL de la API", value="http://localhost:8000")
 else:
     model_dir = st.sidebar.text_input("Carpeta de modelos", value="models")
-    data_dir = st.sidebar.text_input("Carpeta de datos (para hi storial de usuario)", value="data")
+    data_dir = st.sidebar.text_input("Carpeta de datos (para historial de usuario)", value="data")
 
 st.sidebar.markdown("---")
 st.sidebar.caption("Sugerencia: en 'Usar API', corre previamente: `uvicorn app.main:app --reload --port 8000`")
